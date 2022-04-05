@@ -1,18 +1,19 @@
 import axios from "axios";
 import MovieHeader from "../../components/Movies/MovieHeader";
+import Videos from "../../components/Movies/Videos";
 
 const SingleMoviePage = (props) => {
-  console.log(props.casts);
   return (
     <>
-      <MovieHeader data={props.movie} />
+      <MovieHeader data={props.movie} casts={props.casts} />
+      <Videos data={props.videos} />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
   try {
-    const [movie, casts] = await Promise.all([
+    const [movie, casts, videos] = await Promise.all([
       axios.get(`${process.env.API_URI}/movie/${context.query.movie_id}`, {
         params: {
           api_key: process.env.API_KEY,
@@ -26,12 +27,21 @@ export async function getServerSideProps(context) {
           },
         }
       ),
+      axios.get(
+        `${process.env.API_URI}/movie/${context.query.movie_id}/videos`,
+        {
+          params: {
+            api_key: process.env.API_KEY,
+          },
+        }
+      ),
     ]);
 
     return {
       props: {
         movie: movie.data,
         casts: casts.data,
+        videos: videos.data,
       }, // will be passed to the page component as props
     };
   } catch (error) {}

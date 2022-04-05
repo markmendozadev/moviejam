@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Casts from "./Casts";
 const MovieHeader = (props) => {
   return (
     <header
@@ -15,12 +16,12 @@ const MovieHeader = (props) => {
             "linear-gradient(to right, rgb(18 18 18) 150px, rgb(34 34 34 / 84%) 100%)",
         }}
       >
-        <div className="max-w-screen-xl m-auto flex gap-8 p-12 ">
-          <div className="w-full">
+        <div className="max-w-screen-2xl m-auto flex gap-8 p-12 ">
+          <div className="w-full h-full">
             <Image
-              src={`${process.env.API_IMG_URI}${props.data.poster_path}`}
+              src={`${process.env.API_IMG_URI_ORIG}${props.data.poster_path}`}
               layout="responsive"
-              height="100%"
+              height="128rem"
               width="100%"
               alt={props.name}
             />
@@ -43,10 +44,11 @@ const MovieHeader = (props) => {
                 <span className="font-bold">
                   {props.data.spoken_languages
                     .map((language) => language.english_name)
-                    .join(",")}
+                    .join(", ")}
                 </span>
               </span>
             </div>
+            <Casts data={props.casts} />
           </div>
         </div>
       </div>

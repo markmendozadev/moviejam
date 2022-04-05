@@ -1,10 +1,17 @@
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+  const onSearchHandler = (e) => {
+    e.preventDefault();
+    router.replace(`/search/${search}`);
+  };
   return (
-    <nav className="text-black bg-white shadow-xl">
-      <div className="max-w-screen-xl m-auto flex  px-6 py-2 justify-between items-center">
+    <nav className="bg-black text-white shadow-xl">
+      <div className="max-w-screen-xl m-auto flex  px-6 py-4 justify-between items-center">
         <h2 className="font-medium text-3xl">
           <Link href="/">
             <a>
@@ -14,9 +21,14 @@ const Navbar = () => {
         </h2>
         <ul>
           <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
+            <form onSubmit={onSearchHandler}>
+              <input
+                className="text-black p-2"
+                placeholder="Search Movie"
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+              />
+            </form>
           </li>
         </ul>
       </div>
