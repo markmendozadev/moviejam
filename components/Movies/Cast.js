@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import default_img from "../../assets/default_img.png";
 const myLoader = ({ src, width, quality }) => {
-  return `${process.env.API_IMG_URI}${src}`;
+  return `https://image.tmdb.org/t/p/w500${src}`;
 };
 
 const Cast = (props) => {
