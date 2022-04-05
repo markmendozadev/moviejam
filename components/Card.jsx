@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import default_img from "../assets/default_img.png";
 
 const myLoader = ({ src, width, quality }) => {
   return `https://image.tmdb.org/t/p/w500${src}`;

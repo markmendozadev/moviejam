@@ -8,7 +8,7 @@ export default function Home(props) {
       <h2 className="p-6 pb-0 text-2xl font-bold text-black">
         Discover New Movies
       </h2>
-      <section className="grid grid-cols-4 gap-6 p-6">
+      <section className="grid md:grid-cols-4 gap-6 p-6">
         {props.movies.results.map((movie) => (
           <Card
             key={movie.id}

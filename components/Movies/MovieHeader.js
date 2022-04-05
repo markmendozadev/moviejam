@@ -19,7 +19,7 @@ const MovieHeader = (props) => {
             "linear-gradient(to right, rgb(18 18 18) 150px, rgb(34 34 34 / 84%) 100%)",
         }}
       >
-        <div className="max-w-screen-2xl m-auto flex gap-8 p-12 ">
+        <div className="max-w-screen-2xl m-auto lg:flex gap-8 p-12 ">
           <div className="w-full h-full">
             <Image
               loader={myLoader}
