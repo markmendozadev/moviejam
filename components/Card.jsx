@@ -3,7 +3,7 @@ import Link from "next/link";
 import default_img from "../assets/default_img.png";
 
 const myLoader = ({ src, width, quality }) => {
-  return `${process.env.API_IMG_URI}${src}`;
+  return `https://image.tmdb.org/t/p/w500${src}`;
 };
 
 const Card = (props) => {
@@ -13,7 +13,7 @@ const Card = (props) => {
         <div className="w-full">
           <Image
             loader={myLoader}
-            src={`${props.poster ? `${props.poster}` : `${default_img.src}`}`}
+            src={props.poster}
             layout="responsive"
             height="100%"
             width="100%"
