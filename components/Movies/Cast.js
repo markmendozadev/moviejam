@@ -11,11 +11,7 @@ const Cast = (props) => {
       <div className="w-48 h-42">
         <Image
           loader={myLoader}
-          src={`${
-            props.cast.profile_path
-              ? `${props.cast.profile_path}`
-              : `${default_img.src}`
-          }`}
+          src={props.cast.profile_path}
           alt={props.cast.name}
           width="100%"
           height="100%"
