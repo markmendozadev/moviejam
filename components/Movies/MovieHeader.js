@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Casts from "./Casts";
+const myLoader = ({ src, width, quality }) => {
+  return `https://image.tmdb.org/t/p/original${src}`;
+};
 const MovieHeader = (props) => {
   return (
     <header
@@ -19,7 +22,8 @@ const MovieHeader = (props) => {
         <div className="max-w-screen-2xl m-auto flex gap-8 p-12 ">
           <div className="w-full h-full">
             <Image
-              src={`${process.env.API_IMG_URI_ORIG}${props.data.poster_path}`}
+              loader={myLoader}
+              src={props.data.poster_path}
               layout="responsive"
               height="128rem"
               width="100%"
